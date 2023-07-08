@@ -1,4 +1,5 @@
-import defaultTheme from 'tailwindcss/defaultTheme'
+/* eslint-disable no-undef */
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -6,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', ...defaultTheme.fontFamily.sans]
+        sans: ['Rubik', ...fontFamily.sans]
       }
     }
   },
