@@ -15,7 +15,7 @@ defineProps({
   <li>
     <a
       :href="url"
-      class="inline-block border-b-2 border-transparent p-4 hover:border-b-emerald-500 hover:bg-emerald-50 hover:text-emerald-500"
+      class="inline-block border-b-2 border-transparent p-4 transition hover:border-b-emerald-500 hover:bg-emerald-50 hover:text-emerald-500"
     >
       {{ label }}
     </a>

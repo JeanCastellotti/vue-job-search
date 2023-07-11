@@ -9,5 +9,7 @@ export default {
 </script>
 
 <template>
-  <TheHeader />
+  <div class="min-h-screen bg-gray-100">
+    <TheHeader />
+  </div>
 </template>
