@@ -30,7 +30,7 @@ export default {
 </script>
 
 <template>
-  <header class="sticky top-0 bg-white">
+  <header class="sticky top-0 mb-10 bg-white">
     <div class="flex items-center justify-between border-b px-8">
       <TheLogo />
       <div class="flex items-center gap-5">
@@ -40,7 +40,7 @@ export default {
           <HeaderUserAvatar />
           <AppButton type="danger" @click="logout">Logout</AppButton>
         </template>
-        <AppButton v-else @click="login">Sign in</AppButton>
+        <AppButton v-else icon="IconSignIn" data-type="foo" @click="login">Sign in</AppButton>
       </div>
     </div>
 
