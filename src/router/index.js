@@ -4,8 +4,8 @@ import HomePage from '@/pages/HomePage.vue'
 import JobsPage from '@/pages/JobsPage.vue'
 
 const routes = [
-  { path: '/', component: HomePage },
-  { path: '/jobs', component: JobsPage }
+  { path: '/', name: 'home', component: HomePage },
+  { path: '/jobs', name: 'jobs', component: JobsPage }
 ]
 
 const router = createRouter({

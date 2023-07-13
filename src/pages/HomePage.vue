@@ -1,3 +1,7 @@
+<script setup>
+import TheHero from '@/components/TheHero.vue'
+</script>
+
 <template>
-  <h1 class="text-2xl text-gray-800">Home</h1>
+  <TheHero />
 </template>
