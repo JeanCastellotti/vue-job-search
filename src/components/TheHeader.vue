@@ -18,6 +18,11 @@ export default {
       isLoggedIn: false
     }
   },
+  computed: {
+    onJobsPage() {
+      return this.$route.name === 'jobs'
+    }
+  },
   methods: {
     login() {
       this.isLoggedIn = true
@@ -40,10 +45,10 @@ export default {
           <HeaderUserAvatar />
           <AppButton type="danger" @click="logout">Logout</AppButton>
         </template>
-        <AppButton v-else icon="IconSignIn" data-type="foo" @click="login">Sign in</AppButton>
+        <AppButton v-else icon="IconSignIn" @click="login">Sign in</AppButton>
       </div>
     </div>
 
-    <HeaderSubnav v-if="isLoggedIn" />
+    <HeaderSubnav v-if="onJobsPage" />
   </header>
 </template>

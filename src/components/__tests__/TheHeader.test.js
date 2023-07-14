@@ -1,11 +1,21 @@
 import { render, screen } from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
 import TheHeader from '@/components/TheHeader.vue'
+import { RouterLinkStub } from '@vue/test-utils'
 
 describe('TheHeader', () => {
   describe('when user logs in', () => {
-    it('displays user avatar', async () => {
-      render(TheHeader)
+    it('should display user avatar', async () => {
+      const $route = { name: '/' }
+      render(TheHeader, {
+        global: {
+          mocks: { $route },
+          stubs: { RouterLink: RouterLinkStub }
+        },
+        data: () => ({
+          isLoggedIn: false
+        })
+      })
       let img = screen.queryByRole('img', { name: /avatar/i })
       expect(img).not.toBeInTheDocument()
       const loginButton = screen.getByRole('button', { name: /sign in/i })
@@ -16,13 +26,16 @@ describe('TheHeader', () => {
   })
 
   describe('when user logs out', () => {
-    it('hides user avatar', async () => {
+    it('should hide user avatar', async () => {
+      const $route = { name: '/' }
       render(TheHeader, {
-        data() {
-          return {
-            isLoggedIn: true
-          }
-        }
+        global: {
+          mocks: { $route },
+          stubs: { RouterLink: RouterLinkStub }
+        },
+        data: () => ({
+          isLoggedIn: true
+        })
       })
 
       let img = screen.queryByRole('img', { name: /avatar/i })
@@ -31,6 +44,34 @@ describe('TheHeader', () => {
       await userEvent.click(logoutButton)
       img = screen.queryByRole('img', { name: /avatar/i })
       expect(img).not.toBeInTheDocument()
+    })
+  })
+
+  describe('when user is on jobs page', () => {
+    it('should render the subnav', () => {
+      const $route = { name: 'jobs' }
+      render(TheHeader, {
+        global: {
+          mocks: { $route },
+          stubs: { RouterLink: RouterLinkStub }
+        }
+      })
+      const jobsCount = screen.getByText('461 jobs found')
+      expect(jobsCount).toBeInTheDocument()
+    })
+  })
+
+  describe('when user is not on jobs page', () => {
+    it('should not render the subnav', () => {
+      const $route = { name: 'home' }
+      render(TheHeader, {
+        global: {
+          mocks: { $route },
+          stubs: { RouterLink: RouterLinkStub }
+        }
+      })
+      const jobsCount = screen.queryByText('461 jobs found')
+      expect(jobsCount).not.toBeInTheDocument()
     })
   })
 })
