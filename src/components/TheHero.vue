@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col items-center gap-5">
-    <span class="max-w-2xl text-center text-6xl font-bold leading-relaxed text-gray-700">
+  <div class="flex items-center gap-5">
+    <span class="max-w-xl text-center text-6xl font-bold leading-relaxed text-gray-700">
       Find your next job at
       <span class="bg-gradient-to-r from-emerald-400 to-indigo-400 bg-clip-text text-transparent">
         Vue Careers

@@ -1,7 +1,11 @@
 <script setup>
 import TheHero from '@/components/TheHero.vue'
+import SearchForm from '../components/SearchForm.vue'
 </script>
 
 <template>
-  <TheHero />
+  <div class="space-y-10">
+    <TheHero />
+    <SearchForm />
+  </div>
 </template>
