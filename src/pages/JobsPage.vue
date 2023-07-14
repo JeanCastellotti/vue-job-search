@@ -1,7 +1,11 @@
 <script setup>
-import SearchForm from '@/components/SearchForm.vue'
+import JobsSidebar from '../components/JobsSidebar.vue'
+import JobsList from '../components/JobsList.vue'
 </script>
 
 <template>
-  <SearchForm />
+  <div class="flex gap-10">
+    <JobsSidebar />
+    <JobsList class="flex-1" />
+  </div>
 </template>
