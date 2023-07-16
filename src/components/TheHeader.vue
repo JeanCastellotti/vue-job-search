@@ -4,6 +4,8 @@ import HeaderNav from './HeaderNav.vue'
 import AppButton from './AppButton.vue'
 import HeaderUserAvatar from './HeaderUserAvatar.vue'
 import HeaderSubnav from './HeaderSubnav.vue'
+import { mapStores, mapActions } from 'pinia'
+import { useAuthStore } from '@/store/auth'
 
 export default {
   components: {
@@ -13,23 +15,14 @@ export default {
     HeaderUserAvatar,
     HeaderSubnav
   },
-  data() {
-    return {
-      isLoggedIn: false
-    }
-  },
   computed: {
     onJobsPage() {
       return this.$route.name === 'jobs'
-    }
+    },
+    ...mapStores(useAuthStore)
   },
   methods: {
-    login() {
-      this.isLoggedIn = true
-    },
-    logout() {
-      this.isLoggedIn = false
-    }
+    ...mapActions(useAuthStore, { login: 'login', logout: 'logout' })
   }
 }
 </script>
@@ -41,7 +34,7 @@ export default {
       <div class="flex items-center gap-5">
         <HeaderNav />
         <div class="h-8 border-r"></div>
-        <template v-if="isLoggedIn">
+        <template v-if="authStore.isLoggedIn">
           <HeaderUserAvatar />
           <AppButton type="danger" @click="logout">Logout</AppButton>
         </template>
