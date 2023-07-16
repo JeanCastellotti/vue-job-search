@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "test:unit": "vitest --coverage",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "api": "json-server db.json -d 500"
   },
   "dependencies": {
     "vue": "^3.3.4",
