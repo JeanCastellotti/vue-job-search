@@ -3,10 +3,9 @@ import { ref } from 'vue'
 import HeaderNavItem from './HeaderNavItem.vue'
 
 const links = ref([
-  { url: '#', label: 'Teams' },
-  { url: '#', label: 'Locations' },
-  { url: '#', label: 'How we hire' },
-  { url: '#', label: 'Students' },
+  { url: '/teams', label: 'Teams' },
+  { url: '/locations', label: 'Locations' },
+  { url: '/students', label: 'Students' },
   { url: '/jobs', label: 'Jobs' }
 ])
 </script>
