@@ -1,16 +1,13 @@
-<script>
-import IconMagnifyingGlass from './icons/IconMagnifyingGlass.vue'
+<script setup>
+import IconMagnifyingGlass from '@/components/icons/IconMagnifyingGlass.vue'
+import { useJobsStore } from '../store/jobs'
 
-export default {
-  components: {
-    IconMagnifyingGlass
-  }
-}
+const store = useJobsStore()
 </script>
 
 <template>
   <div class="flex items-center gap-3 border-b px-8 py-3">
     <IconMagnifyingGlass class="text-emerald-500" />
-    <span class="text-gray-600">461 jobs found</span>
+    <span class="text-gray-600">{{ store.jobsCount }} jobs found</span>
   </div>
 </template>
