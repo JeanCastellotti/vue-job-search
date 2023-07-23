@@ -1,29 +1,20 @@
-<script>
-import SearchFormInput from './SearchFormInput.vue'
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+import SearchFormInput from '@/components/SearchFormInput.vue'
 import AppButton from '@/components/AppButton.vue'
 
-export default {
-  components: {
-    SearchFormInput,
-    AppButton
-  },
-  data() {
-    return {
-      role: '',
-      location: ''
-    }
-  },
-  methods: {
-    handleSubmit() {
-      this.$router.push({
-        name: 'jobs',
-        query: {
-          role: this.role,
-          location: this.location
-        }
-      })
-    }
-  }
+const router = useRouter()
+
+const role = ref('')
+const location = ref('')
+
+function handleSubmit() {
+  router.push({
+    name: 'jobs',
+    query: { role: role.value, location: location.value }
+  })
 }
 </script>
 
