@@ -1,10 +1,8 @@
 <script setup>
-// import { RouterLink } from 'vue-router'
-
 defineProps({
   url: {
     type: String,
-    default: '#'
+    required: true
   },
   label: {
     type: String,
