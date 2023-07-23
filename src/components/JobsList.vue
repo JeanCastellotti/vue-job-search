@@ -1,8 +1,10 @@
 <script setup>
-import JobsListItem from './JobsListItem.vue'
-import AppSpinner from '@/components/AppSpinner.vue'
-import { computed, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+
+import AppSpinner from '@/components/AppSpinner.vue'
+import JobsListItem from '@/components/JobsListItem.vue'
+
 import { useJobsStore } from '@/store/jobs'
 
 const RESULTS_PER_PAGE = 10
@@ -10,19 +12,23 @@ const RESULTS_PER_PAGE = 10
 const store = useJobsStore()
 const route = useRoute()
 
-// const jobs = ref([])
-// const isLoading = ref(false)
-// const error = ref(null)
+const isLoading = ref(false)
+const error = ref(null)
 
-onMounted(() => {
-  store.fetchJobs()
+onMounted(async () => {
+  if (store.filteredJobs.length) return
+
+  try {
+    isLoading.value = true
+    await store.fetchJobs()
+  } catch (err) {
+    err.value = err.message
+  } finally {
+    isLoading.value = false
+  }
 })
 
-// const page = +route.query.page || 1
-// const from = (page - 1) * RESULTS_PER_PAGE
-// const to = page * RESULTS_PER_PAGE
-
-const jobs = computed(() => store.jobs)
+const jobs = computed(() => store.filteredJobs)
 const page = computed(() => +route.query.page || 1)
 const pages = computed(() => Math.ceil(jobs.value.length / RESULTS_PER_PAGE))
 const previousPage = computed(() => (page.value - 1 ? page.value - 1 : null))
