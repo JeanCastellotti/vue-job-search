@@ -1,6 +1,6 @@
 <script setup>
 import TheHero from '@/components/TheHero.vue'
-import SearchForm from '../components/SearchForm.vue'
+import SearchForm from '@/components/SearchForm.vue'
 </script>
 
 <template>

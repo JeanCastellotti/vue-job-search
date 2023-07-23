@@ -1,6 +1,6 @@
 <script setup>
-import JobsSidebar from '../components/JobsSidebar.vue'
-import JobsList from '../components/JobsList.vue'
+import JobsSidebar from '@/components/JobsSidebar.vue'
+import JobsList from '@/components/JobsList.vue'
 </script>
 
 <template>
