@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -11,7 +11,7 @@ const router = useRouter()
 
 const store = useJobsStore()
 
-const selectedOrganizations = ref([])
+const selectedOrganizations = ref<string[]>([])
 
 function handleSelectOrganization() {
   store.addSelectedOrganizations(selectedOrganizations.value)

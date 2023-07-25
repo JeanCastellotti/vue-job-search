@@ -1,10 +1,13 @@
-<script setup>
-defineProps({
-  label: String,
-  modelValue: String
-})
+<script setup lang="ts">
+defineProps<{
+  label: string
+  modelValue: string
+}>()
 
-defineEmits(['update:modelValue'])
+// defineEmits(['update:modelValue'])
+defineEmits<{
+  'update:modelValue': [value: string]
+}>()
 </script>
 
 <template>
@@ -14,7 +17,7 @@ defineEmits(['update:modelValue'])
       type="text"
       :id="label"
       :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       class="flex-1 rounded px-4 py-2"
     />
   </div>

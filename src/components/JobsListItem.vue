@@ -1,15 +1,6 @@
-<script setup>
-defineProps({
-  id: Number,
-  title: String,
-  organization: String,
-  locations: Array,
-  degree: String,
-  minimumQualifications: Array,
-  preferredQualifications: Array,
-  description: Array,
-  jobType: String
-})
+<script setup lang="ts">
+import type { Job } from '@/api/types'
+defineProps<Job>()
 </script>
 
 <template>

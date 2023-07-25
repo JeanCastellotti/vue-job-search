@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import IconMagnifyingGlass from '@/components/icons/IconMagnifyingGlass.vue'
-import { useJobsStore } from '../store/jobs'
+import { useJobsStore } from '@/store/jobs'
 
 const store = useJobsStore()
 </script>

@@ -1,14 +1,8 @@
-<script setup>
-defineProps({
-  url: {
-    type: String,
-    required: true
-  },
-  label: {
-    type: String,
-    required: true
-  }
-})
+<script setup lang="ts">
+defineProps<{
+  url: string
+  label: string
+}>()
 </script>
 
 <template>

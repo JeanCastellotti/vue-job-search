@@ -6,6 +6,7 @@ import AppSpinner from '@/components/AppSpinner.vue'
 import JobsListItem from '@/components/JobsListItem.vue'
 
 import { useJobsStore } from '@/store/jobs'
+import { usePreviousAndNextPage } from '../composables/usePreviousAndNextPage'
 
 const RESULTS_PER_PAGE = 10
 
@@ -31,8 +32,10 @@ onMounted(async () => {
 const jobs = computed(() => store.filteredJobs)
 const page = computed(() => +route.query.page || 1)
 const pages = computed(() => Math.ceil(jobs.value.length / RESULTS_PER_PAGE))
-const previousPage = computed(() => (page.value - 1 ? page.value - 1 : null))
-const nextPage = computed(() => (page.value + 1 <= pages.value ? page.value + 1 : null))
+// const previousPage = computed(() => (page.value - 1 ? page.value - 1 : null))
+// const nextPage = computed(() => (page.value + 1 <= pages.value ? page.value + 1 : null))
+
+const { previousPage, nextPage } = usePreviousAndNextPage(page, pages)
 
 const filteredJobs = computed(() => {
   const from = (page.value - 1) * RESULTS_PER_PAGE

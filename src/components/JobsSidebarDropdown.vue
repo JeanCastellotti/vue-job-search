@@ -1,15 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
 import IconChevronDown from './icons/IconChevronDown.vue'
 import IconChevronUp from './icons/IconChevronUp.vue'
 
-defineProps({
-  title: {
-    type: String,
-    required: true
-  }
-})
+defineProps<{
+  title: string
+}>()
 
 const isOpen = ref(false)
 

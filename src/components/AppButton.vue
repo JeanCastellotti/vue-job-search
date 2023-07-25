@@ -1,19 +1,12 @@
-<script setup>
-defineProps({
-  type: {
-    type: String,
-    default: 'primary',
-    validator(value) {
-      return ['primary', 'secondary', 'danger'].includes(value)
-    }
-  },
-  size: {
-    type: String,
-    default: 'base',
-    validator(value) {
-      return ['base', 'small'].includes(value)
-    }
-  }
+<script setup lang="ts">
+interface Props {
+  type?: 'primary' | 'secondary' | 'danger'
+  size?: 'base' | 'small'
+}
+
+withDefaults(defineProps<Props>(), {
+  type: 'primary',
+  size: 'base'
 })
 </script>
 
