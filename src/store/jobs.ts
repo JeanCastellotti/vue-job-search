@@ -1,11 +1,12 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import getJobs from '@/api/getJobs'
+import type { Job } from '@/api/types'
 
 export const useJobsStore = defineStore('jobs', () => {
-  const jobs = ref([])
-  const selectedOrganizations = ref([])
-  const selectedJobTypes = ref([])
+  const jobs = ref<Job[]>([])
+  const selectedOrganizations = ref<string[]>([])
+  const selectedJobTypes = ref<string[]>([])
 
   const jobTypes = computed(() => {
     return [...new Set(jobs.value.map((job) => job.jobType))].sort()
@@ -37,11 +38,11 @@ export const useJobsStore = defineStore('jobs', () => {
     jobs.value = await getJobs()
   }
 
-  function addSelectedOrganizations(organizations) {
+  function addSelectedOrganizations(organizations: string[]) {
     selectedOrganizations.value = organizations
   }
 
-  function addSelectedJobTypes(jobTypes) {
+  function addSelectedJobTypes(jobTypes: string[]) {
     selectedJobTypes.value = jobTypes
   }
 
